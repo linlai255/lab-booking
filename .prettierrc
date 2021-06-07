@@ -1,0 +1,18 @@
+{
+  "printWidth": 150,
+  "semi": false,
+  "tabWidth": 2,
+  "arrowParens": 'always',
+  "singleQuote": true,
+  "vueIndentScriptAndStyle": false,
+  "ignorePath": '.prettierignore',
+  "trailingComma": 'es5',
+  "bracketSpacing": false,
+
+  "overrides": [
+    {
+      "files": ".prettierrc",
+      "options": { "parser": "vue" },
+    },
+  ]
+}
