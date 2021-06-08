@@ -2,17 +2,27 @@
   "printWidth": 150,
   "semi": false,
   "tabWidth": 2,
-  "arrowParens": 'always',
+  "arrowParens": "always",
   "singleQuote": true,
   "vueIndentScriptAndStyle": false,
-  "ignorePath": '.prettierignore',
-  "trailingComma": 'es5',
-  "bracketSpacing": false,
-
+  "ignorePath": ".prettierignore",
+  "trailingComma": "es5",
+  "bracketSpacing": true,
   "overrides": [
     {
       "files": ".prettierrc",
-      "options": { "parser": "vue" },
+      "options": {
+        "parser": "json"
+      }
     },
+    {
+      "files": [
+        "*.js"
+      ],
+      "options": {
+        "tabWidth": 4,
+        "printWidth": 100
+      }
+    }
   ]
 }

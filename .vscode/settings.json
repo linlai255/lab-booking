@@ -14,6 +14,8 @@
     "javascriptreact",
     "vue",
   ],
+  // validate js/ts in <script>
+  "vetur.validation.script": true,
   "vetur.format.defaultFormatter.js": "prettier-eslint",
   "vetur.format.scriptInitialIndent": false,
   "vetur.format.styleInitialIndent": false,
@@ -23,7 +25,15 @@
     "source.fixAll": true,
     "source.organizeImports": true
   },
+  "vetur.format.defaultFormatterOptions": {
+    "prettier": {
+      "singleQuote": true,
+      "semi": false,
+      "eslintIntegration": true
+    }
+  },
+  "terminal.integrated.fontSize": 14,
   "[vue]": {
-    "editor.defaultFormatter": "octref.vetur"
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   }
 }
