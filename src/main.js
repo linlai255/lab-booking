@@ -1,3 +1,4 @@
+import 'element-plus/lib/theme-chalk/base.css'
 import { createApp } from 'vue'
 import App from './App.vue'
 import installElementPlus from './plugins/element'

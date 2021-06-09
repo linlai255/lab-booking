@@ -30,7 +30,7 @@
 
 <script>
 export default {
-  name: 'AsideMenu',
+  name: 'Menu',
 }
 </script>
 

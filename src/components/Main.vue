@@ -9,7 +9,7 @@
 </template>
 <script>
 export default {
-  name: 'Header',
+  name: 'Main',
   props: {
     data: {
       date: String,

@@ -1,18 +1,27 @@
 <template>
   <div class="login">
-    <h4>login</h4>
-    <el-form label-width="80px" label-position="right" :model="loginData">
-      <el-form-item label="用户名">
-        <el-input placeholder="username" v-model="loginData.username" autocomplete="off"></el-input>
+    <h3>login</h3>
+    <el-form :model="user" :rules="rules" label-width="80px" label-position="right" hide-required-asterisk:true>
+      <el-form-item label="用户名" prop="username" inline-message:true>
+        <el-input placeholder="username" v-model="user.username" autocomplete="off" />
       </el-form-item>
-      <el-form-item label="密码">
-        <el-input type="password" placeholder="password" v-model="loginData.password" show-password></el-input>
+      <el-form-item label="密码" prop="password">
+        <el-input type="password" placeholder="password" v-model="user.password" autocomplete="off" show-password />
       </el-form-item>
       <el-form-item>
-        <el-row>
+        <el-row style="margin-top: 10px">
           <el-button @click="submitForm" class="submit-btn" type="primary">登录</el-button>
-          <!-- <el-button @click="submitForm" class="register-btn" type="primary" plain>注册</el-button> -->
-          <el-button class="register-btn" type="text">注册</el-button>
+          <el-button type="text" @click="dialogVisible = true" class="register-btn">注册</el-button>
+          <el-dialog title="请选择注册类型" v-model="dialogVisible" :width="'300px'">
+            <el-row :gutter="55">
+              <el-col :span="12">
+                <el-button type="warning" @click="register(1)" round style="width: 100px">教师</el-button>
+              </el-col>
+              <el-col :span="12">
+                <el-button type="danger" @click="register(2)" round style="width: 100px">管理员</el-button>
+              </el-col>
+            </el-row>
+          </el-dialog>
         </el-row>
       </el-form-item>
     </el-form>
@@ -20,26 +29,35 @@
 </template>
 
 <script>
-import { reactive } from 'vue'
+import { reactive, ref } from '@vue/reactivity'
 import { ElMessage } from 'element-plus'
-import * as mock from '../http/mock'
-import * as http from '../http/index'
-import router from '../router'
+import * as mock from '@/http/mock'
+import * as http from '@/http/index'
+import router from '@/router/index'
 
 export default {
   name: 'Login',
   setup() {
-    let loginData = reactive({
+    let user = reactive({
       username: 'hello',
       password: 'world',
     })
+    let dialogVisible = ref(false)
+
+    let rules = {
+      username: [{ required: true, message: 'please enter username', trigger: 'blur' }],
+      password: [
+        { required: true, message: 'please enter password', trigger: 'blur' },
+        { min: 6, max: 20, message: 'length between 6 and 20', trigger: 'blur' },
+      ],
+    }
 
     let submitForm = function () {
-      if (!loginData.username) {
+      if (!user.username) {
         ElMessage.error('please enter username.')
         return false
       }
-      if (!loginData.password) {
+      if (!user.password) {
         ElMessage.error('please enter password.')
         return false
       }
@@ -53,13 +71,27 @@ export default {
         .catch((err) => {
           console.log(err)
         })
-      // verifyCode(loginData).then((res) => {
-      //   console.log(res);
-      // });
     }
+
+    let register = (code) => {
+      console.log(code)
+      console.log(dialogVisible.value)
+      dialogVisible.value = false
+
+      router.push({
+        name: 'Registration',
+        params: {
+          type: code,
+        },
+      })
+    }
+
     return {
-      loginData,
+      user,
+      rules,
+      register,
       submitForm,
+      dialogVisible,
     }
   },
   methods: {},
@@ -74,7 +106,7 @@ export default {
   border-radius: 10px;
   padding: 20px;
 }
-h4 {
+h3 {
   text-align: center;
 }
 .submit-btn {
