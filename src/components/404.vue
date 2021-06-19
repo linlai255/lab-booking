@@ -1,11 +1,11 @@
 <template>
-  <span>Upload</span>
+  <span>404</span>
 </template>
 
 <script>
 import { reactive } from '@vue/reactivity'
 export default {
-  name: 'Upload',
+  name: '404',
   setup() {
     let data = reactive({})
     return {

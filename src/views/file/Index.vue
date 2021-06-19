@@ -1,11 +1,11 @@
 <template>
-  <span>Upload</span>
+  <span>this is file index</span>
 </template>
 
 <script>
 import { reactive } from '@vue/reactivity'
 export default {
-  name: 'Upload',
+  name: 'Index',
   setup() {
     let data = reactive({})
     return {

@@ -1,5 +1,5 @@
 <template>
-  <span />
+  <span>Booking</span>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <span />
+  <span>role </span>
 </template>
 
 <script>

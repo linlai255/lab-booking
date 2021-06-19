@@ -1,5 +1,5 @@
 <template>
-  <span />
+  <span>Download</span>
 </template>
 
 <script>

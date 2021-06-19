@@ -1,5 +1,5 @@
 <template>
-  <span />
+  <span>Bind</span>
 </template>
 
 <script>

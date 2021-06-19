@@ -1,5 +1,5 @@
 <template>
-  <span />
+  <span>menu</span>
 </template>
 
 <script>
